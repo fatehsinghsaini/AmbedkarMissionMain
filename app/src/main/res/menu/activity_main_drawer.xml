@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+
+        <item
+            android:id="@+id/Home"
+            android:icon="@drawable/ic_home_black_24dp"
+            android:title="Home" />
+        <item
+            android:id="@+id/Registration"
+            android:icon="@drawable/ic_person_black_24dp"
+            android:title="Register" />
+        <item
+            android:id="@+id/Feedback"
+            android:icon="@drawable/ic_feedback_black_24dp"
+            android:title="Feedback" />
+        <item
+            android:id="@+id/AboutUs"
+            android:icon="@drawable/ic_if_about_2639759"
+            android:title="AboutUs" />
+        <item
+            android:id="@+id/AmbedkarMission"
+            android:icon="@drawable/ic_mission"
+            android:title="AmbedkarMission" />
+
+
+
+
+
+</menu>

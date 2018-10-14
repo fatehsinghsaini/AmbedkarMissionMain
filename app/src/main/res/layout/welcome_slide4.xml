@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+       android:gravity="center"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="300dp"
+            android:layout_height="250dp"
+            android:src="@drawable/logo" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:paddingLeft="@dimen/desc_padding"
+            android:paddingRight="@dimen/desc_padding"
+            android:text="Cultivation of mind should be the ultimate aim of human existence"
+            android:textAlignment="center"
+            android:textColor="@android:color/black"
+            android:textSize="19dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="B.R.Ambedkar"
+            android:gravity="right"
+            android:paddingRight="20dp"
+            android:layout_marginTop="5dp"
+            android:textColor="@android:color/black"
+            android:textSize="18dp"
+            android:textStyle="bold" />
+<!--<TextView
+    android:layout_width="150dp"
+    android:layout_height="45dp"
+    android:text="Next"
+    android:textSize="23dp"
+    android:layout_marginTop="70dp"
+    android:gravity="center"
+    android:id="@+id/next_text"
+    android:textColor="#0522b4"
+    android:background="@drawable/layout"
+    />-->
+    </LinearLayout>
+
+</RelativeLayout>
