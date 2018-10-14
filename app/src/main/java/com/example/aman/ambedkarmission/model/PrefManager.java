@@ -1,4 +1,4 @@
-package com.example.aman.ambedkarmission.Class;
+package com.example.aman.ambedkarmission.model;
 
 import android.content.Context;
 import android.content.SharedPreferences;

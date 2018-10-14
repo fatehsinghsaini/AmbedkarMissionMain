@@ -18,7 +18,8 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.example.aman.ambedkarmission.Class.PrefManager;
+import com.example.aman.ambedkarmission.model.PrefManager;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class WelcomeActivity extends AppCompatActivity {
     private ViewPager viewPager;
@@ -47,6 +48,8 @@ public class WelcomeActivity extends AppCompatActivity {
         dotsLayout = (LinearLayout) findViewById(R.id.layoutDots);
         btnSkip = (Button) findViewById(R.id.btn_skip);
         btnNext = (Button) findViewById(R.id.btn_next);
+
+        FirebaseDatabase.getInstance().setPersistenceEnabled(true);
 
 
         // layouts of all welcome sliders

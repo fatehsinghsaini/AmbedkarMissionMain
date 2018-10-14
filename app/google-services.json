@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "872032975501",
+    "firebase_url": "https://formadda-f19a4.firebaseio.com",
+    "project_id": "formadda-f19a4",
+    "storage_bucket": "formadda-f19a4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:872032975501:android:872c46b93eb457a7",
+        "android_client_info": {
+          "package_name": "com.example.aman.ambedkarmission"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "872032975501-kadrq3sdjiog8otk3dh75p1v0470o52p.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.aman.ambedkarmission",
+            "certificate_hash": "6acceed1a9699ab12a41d2a660fe8c46c3613613"
+          }
+        },
+        {
+          "client_id": "872032975501-pk38kejr21va6fvte2b685k5qmva999e.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBOVMx_D4Onanr4IL67w8NqSTn9UQYdDJQ"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "872032975501-pk38kejr21va6fvte2b685k5qmva999e.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
