@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
+    <color name="colorSkyBlue">#0ae6f2</color>
+    <color name="colorWhite">#ffffff</color>
+    <color name="colorGray">#777777</color>
+    <color name="colorSkyBlueLight">#daf9fe</color>
+    <color name="colorBlack">#000000</color>
+
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
@@ -35,4 +42,12 @@
         <item>@color/dot_dark_screen3</item>
         <item>@color/dot_dark_screen4</item>
     </array>
+
+    <color name="colorGrayDark">#777777</color>
+    <color name="trans_gray">#bfbfbebe</color>
+    <color name="colorTransparent">#00ffffff</color>
+    <color name="colorSkyBlueDark">#16bfdc</color>
+    <color name="trans">@android:color/transparent</color>
+    <color name="selected_option">#009688</color>
+
 </resources>

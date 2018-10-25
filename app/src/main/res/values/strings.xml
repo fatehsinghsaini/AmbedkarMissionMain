@@ -39,5 +39,29 @@
     <string name="state">state</string>
     <string name="village">Village</string>
     <string name="postcode">Postal Code</string>
-    <string name="district">District</string>
+    <string name="district">Select District</string>
+    <string name="user_already_exist">User already exist</string>
+    <string name="selectState">Select State</string>
+    <string name="searchState">Search State</string>
+    <string name="searchDistrict">Search District</string>
+    <string name="name_require">Name is required</string>
+    <string name="state_require">State name is required</string>
+    <string name="district_require">District name is required</string>
+    <string name="email_require">Email or Mobile no is required</string>
+    <string name="enterOtp">Enter One Time Password!</string>
+    <string name="enterTheOtpBelowInCaseFail">Enter the OTP below in case if we fail to detect the SMS automatically.</string>
+    <string name="please_enter_otp">Please enter OTP.</string>
+    <string name="enter_Otp">Enter OTP</string>
+    <string name="resend_otp">Resend?</string>
+    <string name="submit">Submit</string>
+    <string name="otp_not_match">Otp not matched</string>
+    <string name="select_your_gender">Select your gender</string>
+    <string name="male">Male</string>
+    <string name="female">Female</string>
+    <string name="otp_should_be_greater_than3">Otp should be greater than 3</string>
+    <string name="resend_message"> OTP has been sent to your phone number.</string>
+    <string name="cancel">Cancel</string>
+    <string name="ok">Ok</string>
+
+
 </resources>

@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+<layout>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -40,7 +41,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/Name"
-                    android:inputType="number"
+                    android:inputType="textCapWords"
                     android:paddingLeft="5dp"
                     android:paddingTop="5dp"
                     android:singleLine="true" />
@@ -57,7 +58,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/fathersName"
-                    android:inputType="number"
+                    android:inputType="textCapWords"
                     android:paddingLeft="5dp"
                     android:paddingTop="5dp"
                     android:singleLine="true" />
@@ -74,7 +75,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/castname"
-                    android:inputType="number"
+                    android:inputType="textCapWords"
                     android:paddingLeft="5dp"
                     android:paddingTop="5dp"
                     android:singleLine="true" />
@@ -91,7 +92,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/mail_id"
-                    android:inputType="number"
+                    android:inputType="textEmailAddress"
                     android:paddingLeft="5dp"
                     android:paddingTop="5dp"
                     android:singleLine="true" />
@@ -125,36 +126,61 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/blood_group"
-                    android:inputType="number"
+                    android:inputType="text"
                     android:paddingLeft="5dp"
                     android:paddingTop="5dp"
                     android:singleLine="true" />
             </android.support.design.widget.TextInputLayout>
 
+
             <LinearLayout
-                android:id="@+id/listliner"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
-                android:background="@drawable/text_layout"
-                android:weightSum="1">
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_15sdp"
+                android:paddingRight="@dimen/_5ssp"
+                android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/state"
+                    android:id="@+id/txtCountryCode"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="0.2"
-                    android:gravity="center"
-                    android:text="@string/state"
-                    android:textSize="20dp"
-                    android:textStyle="bold" />
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:layout_marginBottom="2dp"
+                    android:drawablePadding="@dimen/_5sdp"
+                    android:drawableRight="@mipmap/languagedropdown"
+                    android:paddingBottom="@dimen/_5sdp"
+                    android:paddingLeft="@dimen/_5sdp"
+                    android:paddingRight="@dimen/_5sdp"
+                    android:paddingTop="@dimen/_5sdp"
+                    android:text="@string/selectState"
+                    android:textSize="@dimen/_12ssp" />
 
-                <ImageView
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_15sdp"
+                android:paddingRight="@dimen/_5ssp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/txtDistrict"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_weight="0.8"
-                    android:src="@drawable/ic_arrow_drop_down_black_24dp" />
+                    android:layout_gravity="bottom"
+                    android:layout_marginBottom="2dp"
+                    android:drawablePadding="@dimen/_5sdp"
+                    android:drawableRight="@mipmap/languagedropdown"
+                    android:paddingBottom="@dimen/_5sdp"
+                    android:paddingLeft="@dimen/_5sdp"
+                    android:paddingRight="@dimen/_5sdp"
+                    android:paddingTop="@dimen/_5sdp"
+                    android:text="@string/district"
+                    android:textSize="@dimen/_12ssp" />
+
+
             </LinearLayout>
 
             <android.support.design.widget.TextInputLayout
@@ -168,7 +194,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/village"
-                    android:inputType="number"
+                    android:inputType="textCapWords"
                     android:paddingLeft="5dp"
                     android:paddingTop="5dp"
                     android:singleLine="true" />
@@ -181,10 +207,9 @@
                 android:layout_margin="5dp">
 
                 <EditText
-                    android:id="@+id/posta"
+                    android:id="@+id/postalCode"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@null"
                     android:hint="@string/postcode"
                     android:inputType="number"
                     android:paddingLeft="5dp"
@@ -192,25 +217,10 @@
                     android:singleLine="true" />
             </android.support.design.widget.TextInputLayout>
 
-            <android.support.design.widget.TextInputLayout
-                android:id="@+id/l_district"
-                android:layout_width="match_parent"
-                android:layout_height="55dp"
-                android:layout_margin="5dp">
 
-                <EditText
-                    android:id="@+id/district"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/district"
-                    android:inputType="number"
-                    android:paddingLeft="5dp"
-                    android:paddingTop="5dp"
-                    android:singleLine="true" />
-            </android.support.design.widget.TextInputLayout>
 
             <Button
-                android:id="@+id/button"
+                android:id="@+id/submitBt"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
@@ -237,3 +247,5 @@
     </RelativeLayout>
 
 </RelativeLayout>
+
+</layout>
