@@ -1,251 +1,291 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".Registration">
-    <TextView
-        android:id="@+id/registerTxt"
+
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/registration"
-        android:textSize="@dimen/large_size"
-        android:gravity="center"
-        android:paddingTop="8dp"
-        android:paddingBottom="8dp"
-        />
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".Registration">
 
 
-    <android.support.v4.widget.NestedScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/registerTxt"
-        >
-
-        <LinearLayout
+        <RelativeLayout
+            android:id="@+id/registerTxtLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+            android:layout_gravity="center_vertical"
+            android:gravity="center_vertical"
+            android:background="@color/selected_option"
+            >
 
-            <android.support.design.widget.TextInputLayout
-                android:id="@+id/l_name"
-                android:layout_width="match_parent"
-                android:layout_height="55dp"
-                android:layout_margin="5dp">
+            <ImageView
+                android:id="@+id/imgBack"
+                android:layout_width="@dimen/_40sdp"
+                android:layout_height="@dimen/_30sdp"
+                android:src="@drawable/ic_arrow_back_black_24dp"
+                />
 
-                <EditText
-                    android:id="@+id/name"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/Name"
-                    android:inputType="textCapWords"
-                    android:paddingLeft="5dp"
-                    android:paddingTop="5dp"
-                    android:singleLine="true" />
-            </android.support.design.widget.TextInputLayout>
-
-            <android.support.design.widget.TextInputLayout
-                android:id="@+id/l_father"
-                android:layout_width="match_parent"
-                android:layout_height="55dp"
-                android:layout_margin="5dp">
-
-                <EditText
-                    android:id="@+id/father"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/fathersName"
-                    android:inputType="textCapWords"
-                    android:paddingLeft="5dp"
-                    android:paddingTop="5dp"
-                    android:singleLine="true" />
-            </android.support.design.widget.TextInputLayout>
-
-            <android.support.design.widget.TextInputLayout
-                android:id="@+id/l_castname"
-                android:layout_width="match_parent"
-                android:layout_height="55dp"
-                android:layout_margin="5dp">
-
-                <EditText
-                    android:id="@+id/castname"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/castname"
-                    android:inputType="textCapWords"
-                    android:paddingLeft="5dp"
-                    android:paddingTop="5dp"
-                    android:singleLine="true" />
-            </android.support.design.widget.TextInputLayout>
-
-            <android.support.design.widget.TextInputLayout
-                android:id="@+id/l_mail"
-                android:layout_width="match_parent"
-                android:layout_height="55dp"
-                android:layout_margin="5dp">
-
-                <EditText
-                    android:id="@+id/mail"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/mail_id"
-                    android:inputType="textEmailAddress"
-                    android:paddingLeft="5dp"
-                    android:paddingTop="5dp"
-                    android:singleLine="true" />
-            </android.support.design.widget.TextInputLayout>
-
-            <android.support.design.widget.TextInputLayout
-                android:id="@+id/l_mobilenumber"
-                android:layout_width="match_parent"
-                android:layout_height="55dp"
-                android:layout_margin="5dp">
-
-                <EditText
-                    android:id="@+id/mobilenumber"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/mobile_no"
-                    android:inputType="number"
-                    android:paddingLeft="5dp"
-                    android:paddingTop="5dp"
-                    android:singleLine="true" />
-            </android.support.design.widget.TextInputLayout>
-
-            <android.support.design.widget.TextInputLayout
-                android:id="@+id/l_Blood_group"
-                android:layout_width="match_parent"
-                android:layout_height="55dp"
-                android:layout_margin="5dp">
-
-                <EditText
-                    android:id="@+id/Blood_group"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/blood_group"
-                    android:inputType="text"
-                    android:paddingLeft="5dp"
-                    android:paddingTop="5dp"
-                    android:singleLine="true" />
-            </android.support.design.widget.TextInputLayout>
-
-
-            <LinearLayout
+            <TextView
+                android:id="@+id/registerTxt"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_15sdp"
-                android:paddingRight="@dimen/_5ssp"
-                android:orientation="horizontal">
+                android:gravity="center"
+                android:textColor="@color/colorWhite"
+                android:text="@string/registration"
+                android:textSize="@dimen/ex_large_size" />
 
-                <TextView
-                    android:id="@+id/txtCountryCode"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="bottom"
-                    android:layout_marginBottom="2dp"
-                    android:drawablePadding="@dimen/_5sdp"
-                    android:drawableRight="@mipmap/languagedropdown"
-                    android:paddingBottom="@dimen/_5sdp"
-                    android:paddingLeft="@dimen/_5sdp"
-                    android:paddingRight="@dimen/_5sdp"
-                    android:paddingTop="@dimen/_5sdp"
-                    android:text="@string/selectState"
-                    android:textSize="@dimen/_12ssp" />
+        </RelativeLayout>
 
 
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_15sdp"
-                android:paddingRight="@dimen/_5ssp"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/txtDistrict"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="bottom"
-                    android:layout_marginBottom="2dp"
-                    android:drawablePadding="@dimen/_5sdp"
-                    android:drawableRight="@mipmap/languagedropdown"
-                    android:paddingBottom="@dimen/_5sdp"
-                    android:paddingLeft="@dimen/_5sdp"
-                    android:paddingRight="@dimen/_5sdp"
-                    android:paddingTop="@dimen/_5sdp"
-                    android:text="@string/district"
-                    android:textSize="@dimen/_12ssp" />
-
-
-            </LinearLayout>
-
-            <android.support.design.widget.TextInputLayout
-                android:id="@+id/l_village"
-                android:layout_width="match_parent"
-                android:layout_height="55dp"
-                android:layout_margin="5dp">
-
-                <EditText
-                    android:id="@+id/village"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/village"
-                    android:inputType="textCapWords"
-                    android:paddingLeft="5dp"
-                    android:paddingTop="5dp"
-                    android:singleLine="true" />
-            </android.support.design.widget.TextInputLayout>
-
-            <android.support.design.widget.TextInputLayout
-                android:id="@+id/l_postal"
-                android:layout_width="match_parent"
-                android:layout_height="55dp"
-                android:layout_margin="5dp">
-
-                <EditText
-                    android:id="@+id/postalCode"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/postcode"
-                    android:inputType="number"
-                    android:paddingLeft="5dp"
-                    android:paddingTop="5dp"
-                    android:singleLine="true" />
-            </android.support.design.widget.TextInputLayout>
-
-
-
-            <Button
-                android:id="@+id/submitBt"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:background="#1010e6"
-                android:text="@string/Submit"
-                android:textColor="#FFFFFF"
-                android:textSize="15dp" />
-        </LinearLayout>
-    </android.support.v4.widget.NestedScrollView>
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="435dp">
-
-        <ListView
-            android:id="@+id/list"
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="300dp"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"
-            android:background="#FFFFFF"
-            android:visibility="gone"></ListView>
-    </RelativeLayout>
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/registerTxtLayout"
+            android:fillViewport="true"
+            >
 
-</RelativeLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/l_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:layout_margin="5dp">
+
+                    <EditText
+                        android:id="@+id/name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/Name"
+                        android:inputType="textCapWords"
+                        android:maxLength="40"
+                        android:maxLines="1"
+                        android:paddingLeft="5dp"
+                        android:paddingTop="5dp"
+                        android:singleLine="true" />
+                </android.support.design.widget.TextInputLayout>
+
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/l_father"
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:layout_margin="5dp">
+
+                    <EditText
+                        android:id="@+id/father"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/fathersName"
+                        android:inputType="textCapWords"
+                        android:maxLength="40"
+                        android:maxLines="1"
+                        android:paddingLeft="5dp"
+                        android:paddingTop="5dp"
+                        android:singleLine="true" />
+                </android.support.design.widget.TextInputLayout>
+
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/l_castname"
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:layout_margin="5dp">
+
+                    <EditText
+                        android:id="@+id/castname"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/castname"
+                        android:inputType="textCapWords"
+                        android:maxLength="20"
+                        android:maxLines="1"
+                        android:paddingLeft="5dp"
+                        android:paddingTop="5dp"
+                        android:singleLine="true" />
+                </android.support.design.widget.TextInputLayout>
+
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/l_mail"
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:layout_margin="5dp">
+
+                    <EditText
+                        android:id="@+id/mail"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/mail_id"
+                        android:inputType="textEmailAddress"
+                        android:maxLength="40"
+                        android:maxLines="1"
+                        android:paddingLeft="5dp"
+                        android:paddingTop="5dp"
+                        android:singleLine="true" />
+                </android.support.design.widget.TextInputLayout>
+
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/l_mobilenumber"
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:layout_margin="5dp">
+
+                    <EditText
+                        android:id="@+id/mobilenumber"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/mobile_no"
+                        android:inputType="number"
+                        android:maxLength="12"
+                        android:maxLines="1"
+                        android:paddingLeft="5dp"
+                        android:paddingTop="5dp"
+                        android:singleLine="true" />
+                </android.support.design.widget.TextInputLayout>
+
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/l_Blood_group"
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:layout_margin="5dp">
+
+                    <EditText
+                        android:id="@+id/Blood_group"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/blood_group"
+                        android:inputType="text"
+                        android:maxLength="10"
+                        android:maxLines="1"
+                        android:paddingLeft="5dp"
+                        android:paddingTop="5dp"
+                        android:singleLine="true" />
+                </android.support.design.widget.TextInputLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_15sdp"
+                    android:orientation="horizontal"
+                    android:paddingLeft="@dimen/_5ssp"
+                    android:paddingRight="@dimen/_10ssp">
+
+                    <TextView
+                        android:id="@+id/txtCountryCode"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="bottom"
+                        android:layout_marginBottom="2dp"
+                        android:drawableRight="@mipmap/languagedropdown"
+                        android:drawablePadding="@dimen/_5sdp"
+                        android:paddingLeft="@dimen/_5sdp"
+                        android:paddingTop="@dimen/_5sdp"
+                        android:paddingRight="@dimen/_5sdp"
+                        android:paddingBottom="@dimen/_5sdp"
+                        android:text="@string/selectState"
+                        android:textSize="@dimen/_12ssp" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_15sdp"
+                    android:orientation="horizontal"
+                    android:paddingLeft="@dimen/_5ssp"
+                    android:paddingRight="@dimen/_10ssp">
+
+                    <TextView
+                        android:id="@+id/txtDistrict"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="bottom"
+                        android:layout_marginBottom="2dp"
+                        android:drawableRight="@mipmap/languagedropdown"
+                        android:drawablePadding="@dimen/_5sdp"
+                        android:paddingLeft="@dimen/_5sdp"
+                        android:paddingTop="@dimen/_5sdp"
+                        android:paddingRight="@dimen/_5sdp"
+                        android:paddingBottom="@dimen/_5sdp"
+                        android:text="@string/district"
+                        android:textSize="@dimen/_12ssp" />
+
+
+                </LinearLayout>
+
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/l_village"
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:layout_margin="5dp">
+
+                    <EditText
+                        android:id="@+id/village"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/village"
+                        android:inputType="textCapWords"
+                        android:maxLength="40"
+                        android:maxLines="1"
+                        android:paddingLeft="5dp"
+                        android:paddingTop="5dp"
+                        android:singleLine="true" />
+                </android.support.design.widget.TextInputLayout>
+
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/l_postal"
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:layout_margin="5dp">
+
+                    <EditText
+                        android:id="@+id/postalCode"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/postcode"
+                        android:inputType="number"
+                        android:maxLength="6"
+                        android:maxLines="1"
+                        android:paddingLeft="5dp"
+                        android:paddingTop="5dp"
+                        android:singleLine="true" />
+                </android.support.design.widget.TextInputLayout>
+
+
+                <Button
+                    android:id="@+id/submitBt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:background="@color/selected_option"
+                    android:text="@string/Submit"
+                    android:textColor="#FFFFFF"
+                    android:textSize="15dp" />
+            </LinearLayout>
+        </ScrollView>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="435dp">
+
+            <ListView
+                android:id="@+id/list"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:background="#FFFFFF"
+                android:visibility="gone"></ListView>
+        </RelativeLayout>
+
+    </RelativeLayout>
 
 </layout>

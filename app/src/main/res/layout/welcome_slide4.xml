@@ -11,42 +11,34 @@
         android:orientation="vertical">
 
         <ImageView
-            android:layout_width="300dp"
-            android:layout_height="250dp"
-            android:src="@drawable/logo" />
+            android:layout_width="@dimen/_200sdp"
+            android:layout_height="@dimen/_200sdp"
+            android:src="@drawable/p1"
+            android:scaleType="fitXY"
+            />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-
             android:paddingLeft="@dimen/desc_padding"
             android:paddingRight="@dimen/desc_padding"
-            android:text="Cultivation of mind should be the ultimate aim of human existence"
+            android:text="@string/theme_msg_name"
             android:textAlignment="center"
+            android:layout_marginTop="@dimen/_5sdp"
             android:textColor="@android:color/black"
-            android:textSize="19dp" />
+            android:textSize="@dimen/_16sdp" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="B.R.Ambedkar"
+            android:text="@string/app_name_h"
             android:gravity="right"
             android:paddingRight="20dp"
             android:layout_marginTop="5dp"
             android:textColor="@android:color/black"
-            android:textSize="18dp"
+            android:textSize="@dimen/_16sdp"
             android:textStyle="bold" />
-<!--<TextView
-    android:layout_width="150dp"
-    android:layout_height="45dp"
-    android:text="Next"
-    android:textSize="23dp"
-    android:layout_marginTop="70dp"
-    android:gravity="center"
-    android:id="@+id/next_text"
-    android:textColor="#0522b4"
-    android:background="@drawable/layout"
-    />-->
+
     </LinearLayout>
 
 </RelativeLayout>

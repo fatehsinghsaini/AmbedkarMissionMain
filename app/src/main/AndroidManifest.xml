@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.info.work.ambedkarmission">
+
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -8,8 +13,9 @@
         android:label="@string/app_name"
         android:roundIcon="@drawable/ic_if_book_298731"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <activity android:name="com.info.work.ambedkarmission.WelcomeActivity">
+        android:theme="@style/AppTheme"
+        tools:ignore="GoogleAppIndexingWarning">
+        <activity android:name="com.info.work.ambedkarmission.StartActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -21,6 +27,11 @@
             android:label="@string/title_activity_main"
             android:theme="@style/AppTheme" />
         <activity android:name="com.info.work.ambedkarmission.Registration"></activity>
+        <activity android:name="com.ois.todo.fragment.OTPFragment"></activity>
+        <activity android:name=".LoginActivity"></activity>
+        <activity android:name=".UploadMediaActivity"></activity>
+        <activity android:name=".VideoPlayActivity"></activity>
+        <activity android:name=".FeedbackActivity"></activity>
     </application>
 
 </manifest>

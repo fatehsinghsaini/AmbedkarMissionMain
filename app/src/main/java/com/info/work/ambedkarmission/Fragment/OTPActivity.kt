@@ -1,28 +1,18 @@
 package com.ois.todo.fragment
 
-import android.annotation.SuppressLint
-import android.app.Dialog
-import android.content.Context
-import android.content.Intent
-import android.os.Build
 import android.os.Bundle
 import android.support.design.widget.TextInputEditText
 import android.support.design.widget.TextInputLayout
-import android.support.v4.app.Fragment
 import android.support.v7.app.AlertDialog
-import android.text.InputType
 import android.util.Log
-import android.util.SparseArray
-import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
-import android.view.ViewGroup
 import android.widget.*
+import com.google.firebase.database.*
 import com.info.work.ambedkarmission.R
-import com.info.work.ambedkarmission.Utils
+import com.info.work.ambedkarmission.model.Registration
 import com.ois.todo.activity.BaseActivity
 import com.ois.todo.util.Validation
-import java.util.*
 
 class OTPFragment : BaseActivity(), View.OnClickListener {
 
@@ -43,15 +33,83 @@ class OTPFragment : BaseActivity(), View.OnClickListener {
     private var language: String? = ""
     private var deviceId: String? = ""
     private var imgBack: ImageView? = null
+    var mFirebaseInstance: FirebaseDatabase? = null
+    var mFirebaseDatabase: DatabaseReference? = null
+    var userId: String? = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.otp_layout)
         initView()
+
+        firebaseSetUp()
+
+        var registration:Registration?=null
+
+        if(intent.hasExtra("registermodel"))
+            registration=intent.getParcelableExtra<Registration>("registermodel")
+        if(intent.hasExtra("otp"))
+            otpNo=intent.getStringExtra("otp")
+
+
+        // Get a reference to our posts
+        val ref = mFirebaseInstance!!.getReference("project/ambedkar-mission/database/ambedkar-mission/data/registration")
+
+        ref.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                val post = dataSnapshot.getValue<Registration>(Registration::class.java)
+
+                if(post==null || post!=registration){
+                    mFirebaseDatabase!!.push().setValue(registration)
+                    addUserChangeListener()
+                }
+                else
+                    Toast.makeText(this@OTPFragment,getString(R.string.user_already_exist),Toast.LENGTH_SHORT).show()
+
+
+            }
+
+            override fun onCancelled(databaseError: DatabaseError) {
+                println("The read failed: " + databaseError.code)
+            }
+        })
+
+
+    }
+
+    private fun firebaseSetUp() {
+
+        mFirebaseInstance = FirebaseDatabase.getInstance()
+
+        // get reference to 'users' node
+        mFirebaseDatabase = mFirebaseInstance!!.getReference("registration")
+
+        // store app title to 'app_title' node
+        mFirebaseInstance!!.getReference("app_title").setValue("Missan")
+        userId = mFirebaseDatabase!!.push().key
+
+
     }
 
 
+    /**
+     * Registration data change listener
+     */
+    private fun addUserChangeListener() {
+        // Registration data change listener
+        mFirebaseDatabase!!.child(userId!!).addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                val user = dataSnapshot.getValue(Registration::class.java)
+                //finish()
 
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                // Failed to read value
+                Log.e(com.info.work.ambedkarmission.Registration.TAG, "Failed to read user", error.toException())
+            }
+        })
+    }
 
 
     private fun initView() {
@@ -73,6 +131,8 @@ class OTPFragment : BaseActivity(), View.OnClickListener {
         txtInputEditNumber!!.requestFocus()
         setClickListener()
     }
+
+
 
     override fun onClick(v: View) {
         when (v.id) {
@@ -97,10 +157,10 @@ class OTPFragment : BaseActivity(), View.OnClickListener {
                 }
 
                 if (Validation.isValidOtp(typedOtp, txtInputEditNumber!!)) {
-                    if (typedOtp != otpNo) {
+                   /* if (typedOtp != otpNo) {
                         Toast.makeText(this@OTPFragment, resources.getString(R.string.otp_not_match), Toast.LENGTH_SHORT).show()
                         return
-                    }
+                    }*/
 
 
                         Validation.hideKeyboard(v, this@OTPFragment!!)
@@ -116,12 +176,12 @@ class OTPFragment : BaseActivity(), View.OnClickListener {
     }
 
     private fun otpverify(v: View) {
-
+   // if(otpNo==typedOtp)
+        finish()
 
     }
 
     private fun resendOtp(v: View) {
-
 
     }
 
@@ -138,11 +198,6 @@ class OTPFragment : BaseActivity(), View.OnClickListener {
         })
 
     }
-
-
-
-
-
 
 
     private fun openDailog() {
@@ -167,7 +222,6 @@ class OTPFragment : BaseActivity(), View.OnClickListener {
         val dialog = dialogBuilder.create()
         dialog.show()
     }
-
 
 
 

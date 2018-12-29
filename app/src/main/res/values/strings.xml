@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">Ambedkar Mission</string>
+    <string name="app_name_h">अम्बेडकर मिशन</string>
     <string name="next">NEXT</string>
     <string name="skip">SKIP</string>
     <string name="start">GOT IT</string>
@@ -33,7 +34,7 @@
     <string name="Name">Name</string>
     <string name="fathersName">Fathers Name</string>
     <string name="castname">Cast Name</string>
-    <string name="mail_id">Mail id</string>
+    <string name="mail_id">Email id</string>
     <string name="mobile_no">Mobile Number</string>
     <string name="blood_group">Blood group</string>
     <string name="state">state</string>
@@ -62,6 +63,50 @@
     <string name="resend_message"> OTP has been sent to your phone number.</string>
     <string name="cancel">Cancel</string>
     <string name="ok">Ok</string>
+    <string name="home">Home</string>
+    <string name="register">Register</string>
+    <string name="feedback">Feedback</string>
+    <string name="aboutUs">AboutUs</string>
+    <string name="AmbedkarMission">AmbedkarMission</string>
+    <string name="login">Login</string>
+    <string name="Reply">Comment</string>
+    <string name="password">Password</string>
+    <string name="userName">User Name</string>
+    <string name="password_require">Password is required</string>
+    <string name="preference_file_key">missan_preference</string>
+    <string name="loginAuthKey">login_auth_key</string>
+    <string name="logout">Logout</string>
+    <string name="upload_media">Upload media</string>
+    <string name="choose_media_type">Choose Media Type</string>
+    <string name="choose_file">Choose file</string>
+    <string name="file_name">No file</string>
+    <string name="message_require">Message is required</string>
+    <string name="username_require">Username is required</string>
+    <string name="pdf">PDF Message</string>
+    <string name="DOCX">DOCX Message</string>
+    <string name="AUDIO">Audio Message</string>
+    <string name="VIDEO">Video Message</string>
+    <string name="IMAGE">Image Message</string>
+    <string name="TEXT">Text</string>
+    <string name="login_successfully">Login successfully</string>
+    <string name="CAPTUREIMAGE">CAPTUREIMAGE</string>
+    <string name="message">Message</string>
+    <string name="share_using">Share using</string>
+    <string name="theme_msg_name">शिक्षित समाज जागृति देश।</string>
+    <string name="no_data_found">No Data Found</string>
+    <string name="type_your_msg">Your questions or suggestions</string>
+
+    <string-array name="media_type">
+        <item>Text</item>
+        <item>Choose Image</item>
+        <item>Video</item>
+        <item>Audio</item>
+
+       <!-- <item>PDF</item>
+        <item>DOCX</item>-->
+
+    </string-array>
+
 
 
 </resources>

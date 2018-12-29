@@ -6,6 +6,16 @@ import java.io.IOException
 import kotlin.text.Charsets.UTF_8
 import android.app.ProgressDialog
 import android.content.Context
+import android.util.Log
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
+import com.info.work.ambedkarmission.Registration.Companion.TAG
+import com.info.work.ambedkarmission.model.UploadMedia
+import java.text.SimpleDateFormat
+import java.util.*
+import kotlin.collections.ArrayList
 
 
 class Utils {
@@ -51,6 +61,14 @@ class Utils {
 
             return progressDialog
         }
+
+        fun getCurrentDateTime():String{
+            var cal= Calendar.getInstance()
+            val sdf = SimpleDateFormat("dd/MM/yyyy HH:mm")
+            return sdf.format(cal.time)
+        }
+
+
 
 
     }

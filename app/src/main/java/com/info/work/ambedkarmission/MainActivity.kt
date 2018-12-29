@@ -9,20 +9,24 @@ import android.support.design.widget.NavigationView
 import android.support.v4.view.GravityCompat
 import android.support.v4.widget.DrawerLayout
 import android.support.v7.app.ActionBarDrawerToggle
-import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
 import android.view.Menu
 import android.view.MenuItem
+import com.google.firebase.auth.FirebaseAuth
 
 import com.info.work.ambedkarmission.Adapter.ViewPagerAdapter
 import com.info.work.ambedkarmission.Fragment.All
 import com.info.work.ambedkarmission.Fragment.Audio
 import com.info.work.ambedkarmission.Fragment.Video
+import com.ois.todo.activity.BaseActivity
 
-class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
+class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedListener {
     private var toolbar: Toolbar? = null
     private var tabLayout: TabLayout? = null
     private var viewPager: ViewPager? = null
+    private var logout: MenuItem? = null
+    private var login: MenuItem? = null
+    private var uploadDoc: MenuItem? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -37,14 +41,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         tabLayout = findViewById<View>(R.id.tabs) as TabLayout
         tabLayout!!.setupWithViewPager(viewPager)
-        /* FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });*/
 
         val drawer = findViewById<View>(R.id.drawer_layout) as DrawerLayout
         val toggle = ActionBarDrawerToggle(
@@ -52,15 +48,19 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         drawer.addDrawerListener(toggle)
         toggle.syncState()
 
-        val navigationView = findViewById<View>(R.id.nav_view) as NavigationView
+        val navigationView = findViewById<NavigationView>(R.id.nav_view)
         navigationView.setNavigationItemSelectedListener(this)
+        val menu = navigationView.menu
+        login=menu.findItem(R.id.login)
+        logout=menu.findItem(R.id.logout)
+        uploadDoc=menu.findItem(R.id.uploadDoc)
     }
 
     private fun setupViewPager(viewPager: ViewPager) {
         val adapter = ViewPagerAdapter(supportFragmentManager)
         adapter.addFragment(All(), "All")
-        adapter.addFragment(Audio(), "Audio")
-        adapter.addFragment(Video(), "Video")
+       /* adapter.addFragment(Audio(), "Audio")
+        adapter.addFragment(Video(), "Video")*/
         viewPager.adapter = adapter
     }
 
@@ -92,6 +92,19 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
     }
 
+    override fun onStart() {
+        super.onStart()
+        initLogoutView()
+    }
+
+    private fun initLogoutView() {
+
+        logout!!.isVisible = sharedPref!!.contains(getString(R.string.loginAuthKey))
+        login!!.isVisible = !sharedPref!!.contains(getString(R.string.loginAuthKey))
+        uploadDoc!!.isVisible = sharedPref!!.contains(getString(R.string.loginAuthKey))
+
+    }
+
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         // Handle navigation view item clicks here.
         val id = item.itemId
@@ -101,15 +114,32 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         } else if (id == R.id.Registration) {
             val intent = Intent(this@MainActivity, Registration::class.java)
             startActivity(intent)
+        }else if (id == R.id.login) {
+            val intent = Intent(this@MainActivity, LoginActivity::class.java)
+            startActivity(intent)
+        }else if (id == R.id.uploadDoc) {
+            val intent = Intent(this@MainActivity, UploadMediaActivity::class.java)
+            startActivity(intent)
         } else if (id == R.id.Feedback) {
 
         } else if (id == R.id.AboutUs) {
 
         } else if (id == R.id.AmbedkarMission) {
 
+        }else if (id == R.id.logout) {
+            sharedPref!!.edit().clear().apply()
+            initLogoutView()
+            FirebaseAuth.getInstance().signOut()
         }
         val drawer = findViewById<View>(R.id.drawer_layout) as DrawerLayout
         drawer.closeDrawer(GravityCompat.START)
         return true
     }
+
+    override fun onRestart() {
+        super.onRestart()
+        logout!!.isVisible = sharedPref!!.contains(getString(R.string.loginAuthKey))
+
+    }
+
 }

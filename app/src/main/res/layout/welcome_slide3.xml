@@ -14,7 +14,7 @@
         <ImageView
             android:layout_width="400dp"
             android:layout_height="400dp"
-            android:src="@drawable/p2" />
+            android:src="@drawable/p1" />
 
 
     </LinearLayout>

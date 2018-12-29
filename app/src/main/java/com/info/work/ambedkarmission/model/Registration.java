@@ -1,9 +1,12 @@
 package com.info.work.ambedkarmission.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.google.firebase.database.IgnoreExtraProperties;
 
 @IgnoreExtraProperties
-public class Registration {
+public class Registration implements Parcelable {
 
     public String name;
     public String fathersName;
@@ -31,6 +34,30 @@ public class Registration {
         this.villageName = villageName;
         this.postalCode = postalCode;
     }
+
+    protected Registration(Parcel in) {
+        name = in.readString();
+        fathersName = in.readString();
+        castName = in.readString();
+        mailId = in.readString();
+        mobileNo = in.readString();
+        stateName = in.readString();
+        districtName = in.readString();
+        villageName = in.readString();
+        postalCode = in.readString();
+    }
+
+    public static final Creator<Registration> CREATOR = new Creator<Registration>() {
+        @Override
+        public Registration createFromParcel(Parcel in) {
+            return new Registration(in);
+        }
+
+        @Override
+        public Registration[] newArray(int size) {
+            return new Registration[size];
+        }
+    };
 
     public String getName() {
         return name;
@@ -105,4 +132,21 @@ public class Registration {
     }
 
 
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(name);
+        dest.writeString(fathersName);
+        dest.writeString(castName);
+        dest.writeString(mailId);
+        dest.writeString(mobileNo);
+        dest.writeString(stateName);
+        dest.writeString(districtName);
+        dest.writeString(villageName);
+        dest.writeString(postalCode);
+    }
 }

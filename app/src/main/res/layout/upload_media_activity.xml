@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+            android:layout_gravity="center_vertical"
+            android:gravity="center_vertical"
+            android:background="@color/selected_option"
+            >
+
+            <ImageView
+                android:id="@+id/imgBack"
+                android:layout_width="@dimen/_40sdp"
+                android:layout_height="@dimen/_30sdp"
+                android:src="@drawable/ic_arrow_back_black_24dp"
+                />
+
+            <TextView
+                android:id="@+id/registerTxt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textColor="@color/colorWhite"
+                android:text="@string/upload_media"
+                android:textSize="@dimen/ex_large_size" />
+
+        </RelativeLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_15ssp"
+            >
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                >
+
+                <EditText
+                    android:id="@+id/userName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_15ssp"
+                    android:hint="@string/userName"
+                    />
+            </android.support.design.widget.TextInputLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingBottom="8dp"
+                android:layout_marginTop="@dimen/_10sdp"
+
+                >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/choose_media_type"
+                    android:textSize="@dimen/medium_size" />
+
+                <Spinner
+                    android:id="@+id/chooseMedia"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    />
+
+
+            </LinearLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                >
+
+                <EditText
+                    android:id="@+id/txtMedia"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_15ssp"
+                    android:hint="@string/message"
+                    android:gravity="top"
+                    />
+            </android.support.design.widget.TextInputLayout>
+
+
+            <LinearLayout
+                android:id="@+id/uploadDocLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10ssp"
+                android:orientation="vertical"
+                android:paddingLeft="@dimen/_10ssp"
+
+                >
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:id="@+id/chooseMediaFile"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/drawable_sky_blue"
+                    android:paddingLeft="@dimen/_10ssp"
+                    android:paddingTop="@dimen/_5ssp"
+                    android:paddingRight="@dimen/_10ssp"
+                    android:paddingBottom="@dimen/_5ssp"
+                    android:text="@string/choose_file"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="@dimen/medium_size" />
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:id="@+id/uriTxt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_5ssp"
+                    android:paddingLeft="@dimen/_6ssp"
+                    android:text="@string/file_name"
+
+                    />
+
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+        <Button
+            android:id="@+id/submitBt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_10sdp"
+            android:background="@color/selected_option"
+            android:text="@string/Submit"
+            android:textColor="@color/colorWhite"
+            android:textSize="@dimen/_15ssp" />
+
+
+    </LinearLayout>
+</layout>

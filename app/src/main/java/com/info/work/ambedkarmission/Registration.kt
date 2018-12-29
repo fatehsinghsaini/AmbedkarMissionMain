@@ -1,6 +1,7 @@
 package com.info.work.ambedkarmission
 
 import android.app.Dialog
+import android.content.Intent
 import android.databinding.DataBindingUtil
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
@@ -20,6 +21,10 @@ import android.widget.EditText
 import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
+import com.google.firebase.FirebaseException
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.PhoneAuthCredential
+import com.google.firebase.auth.PhoneAuthProvider
 
 import com.info.work.ambedkarmission.model.State
 import com.info.work.ambedkarmission.model.StateDistrict
@@ -35,8 +40,10 @@ import com.ois.todo.activity.BaseActivity
 import com.ois.todo.countrylist.DistrictAdapter
 import com.ois.todo.countrylist.StateAdapter
 import com.ois.todo.delegate.CountrySelectListener
+import com.ois.todo.fragment.OTPFragment
 
 import java.util.ArrayList
+import java.util.concurrent.TimeUnit
 
 class Registration : BaseActivity(), View.OnClickListener, CountrySelectListener {
 
@@ -44,9 +51,7 @@ class Registration : BaseActivity(), View.OnClickListener, CountrySelectListener
     var mView: ActivityRegistrationBinding? = null
     var stateList: ArrayList<State> = ArrayList()
     var districtList: ArrayList<String> = ArrayList()
-    private var mFirebaseInstance: FirebaseDatabase? = null
-    private var mFirebaseDatabase: DatabaseReference? = null
-    private var userId: String? = null
+
     private var countryDialog: Dialog? = null
     private var mAdapter: StateAdapter? = null
     private var mDistrictAdapter: DistrictAdapter? = null
@@ -67,57 +72,27 @@ class Registration : BaseActivity(), View.OnClickListener, CountrySelectListener
         mView?.submitBt?.setOnClickListener(this)
         mView?.txtCountryCode?.setOnClickListener(this)
         mView?.txtDistrict?.setOnClickListener(this)
+        mView?.imgBack?.setOnClickListener(this)
 
-        firebaseSetUp()
+       // firebaseSetUp()
 
     }
 
     override fun onClick(v: View?) {
         when (v?.id) {
-            R.id.submitBt -> {
-                createUser()
-            }
+            R.id.submitBt ->createUser()
             R.id.txtCountryCode ->showStateCodes(v)
             R.id.txtDistrict ->showDistrictCodes(v)
+            R.id.imgBack ->finish()
         }
     }
 
-    private fun firebaseSetUp() {
-        mFirebaseInstance = FirebaseDatabase.getInstance()
 
-        // get reference to 'users' node
-        mFirebaseDatabase = mFirebaseInstance!!.getReference("registration")
-
-        // store app title to 'app_title' node
-        mFirebaseInstance!!.getReference("app_title").setValue("Missan")
-
-        // app_title change listener
-        mFirebaseInstance!!.getReference("app_title").addValueEventListener(object : ValueEventListener {
-            override fun onDataChange(dataSnapshot: DataSnapshot) {
-                Log.e(TAG, "App title updated")
-                val appTitle = dataSnapshot.getValue(String::class.java)
-
-            }
-
-            override fun onCancelled(error: DatabaseError) {
-                // Failed to read value
-                Log.e(TAG, "Failed to read app title value.", error.toException())
-            }
-        })
-
-
-    }
 
     /**
      * Creating new user node under 'users'
      */
     private fun createUser() {
-        // TODO
-        // In real apps this userId should be fetched
-        // by implementing firebase auth
-        if (TextUtils.isEmpty(userId)) {
-            userId = mFirebaseDatabase!!.push().key
-        }
 
         if(mView!!.name.text.toString().trim()=="")
         {
@@ -149,68 +124,24 @@ class Registration : BaseActivity(), View.OnClickListener, CountrySelectListener
             return
         }
 
-//String name, String fathersName, String castName, String mailId,
-// String mobileNo, String stateName, String districtName, String villageName, String postalCode) {
+
+        var mobileNo=mView!!.mobilenumber.text.toString().trim()
 
         val registration = Registration(mView!!.name.text.toString().trim(), mView!!.father.text.toString().trim(), mView!!.castname.text.toString().trim(),
-                mView!!.mail.text.toString().trim(), mView!!.mobilenumber.text.toString().trim(), mView!!.txtCountryCode.text.toString().trim()
+                mView!!.mail.text.toString().trim(),mobileNo , mView!!.txtCountryCode.text.toString().trim()
                 , mView!!.txtDistrict.text.toString().trim(), mView!!.village.text.toString().trim(), mView!!.postalCode.text.toString().trim())
 
 
-        // Get a reference to our posts
-        val ref = mFirebaseInstance!!.getReference("project/ambedkar-mission/database/ambedkar-mission/data/registration")
-
-        ref.addValueEventListener(object : ValueEventListener {
-            override fun onDataChange(dataSnapshot: DataSnapshot) {
-                val post = dataSnapshot.getValue<Registration>(Registration::class.java)
-
-              if(post==null || post!=registration){
-                    mFirebaseDatabase!!.child(userId!!).setValue(registration)
-                    addUserChangeListener()
-                }
-                else
-                    Toast.makeText(this@Registration,getString(R.string.user_already_exist),Toast.LENGTH_SHORT).show()
+        phoneVerify("+91"+mobileNo,registration)
 
 
-            }
 
-            override fun onCancelled(databaseError: DatabaseError) {
-                println("The read failed: " + databaseError.code)
-            }
-        })
 
        }
 
-    /**
-     * Registration data change listener
-     */
-    private fun addUserChangeListener() {
-        // Registration data change listener
-        mFirebaseDatabase!!.child(userId!!).addValueEventListener(object : ValueEventListener {
-            override fun onDataChange(dataSnapshot: DataSnapshot) {
-                val user = dataSnapshot.getValue(Registration::class.java)
-                finish()
-
-            }
-
-            override fun onCancelled(error: DatabaseError) {
-                // Failed to read value
-                Log.e(TAG, "Failed to read user", error.toException())
-            }
-        })
-    }
-
-    private fun updateUser(name: String, email: String) {
-        // updating the user via child nodes
-        if (!TextUtils.isEmpty(name))
-            mFirebaseDatabase!!.child(userId!!).child("name").setValue(name)
-
-        if (!TextUtils.isEmpty(email))
-            mFirebaseDatabase!!.child(userId!!).child("email").setValue(email)
-    }
 
     companion object {
-        private val TAG = "Ambedkarmission"
+        val TAG = "Ambedkarmission"
     }
 
 
@@ -222,7 +153,6 @@ class Registration : BaseActivity(), View.OnClickListener, CountrySelectListener
         val counrtyRecycler = countryDialog!!.findViewById<View>(R.id.rvCountryCode) as RecyclerView
         val edtCountrySearch = countryDialog!!.findViewById<View>(R.id.edtCountrySearch) as EditText
         val title = countryDialog!!.findViewById<TextView>(R.id.title)
-
 
 /*        edtCountrySearch.hint=getString(R.string.searchState)
         title.text=getString(R.string.searchState)*/
@@ -243,7 +173,6 @@ class Registration : BaseActivity(), View.OnClickListener, CountrySelectListener
         val window = countryDialog!!.window
         window!!.setGravity(Gravity.CENTER)
         countryDialog!!.show()
-
         v.isEnabled = true
 
         edtCountrySearch.addTextChangedListener(object : TextWatcher {
@@ -395,6 +324,55 @@ class Registration : BaseActivity(), View.OnClickListener, CountrySelectListener
         if (countryDialog != null)
             countryDialog!!.cancel()
     }
+
+    private fun phoneVerify(phoneNum:String,registration: Registration) {
+        val phoneNumber = "+918946851870"
+        val smsCode = "123456"
+
+        val firebaseAuth = FirebaseAuth.getInstance()
+        val firebaseAuthSettings = firebaseAuth.firebaseAuthSettings
+        firebaseAuthSettings.setAutoRetrievedSmsCodeForPhoneNumber(phoneNumber, smsCode)
+
+
+        var intent=Intent(this@Registration,OTPFragment::class.java)
+        intent.putExtra("registermodel",registration)
+       // intent.putExtra("otp",phoneAuthCredential.smsCode)
+        startActivity(intent)
+
+        // Whenever verification is triggered with the whitelisted number,
+        // provided it is not set for auto-retrieval, onCodeSent will be triggered.
+        PhoneAuthProvider.getInstance().verifyPhoneNumber(
+                phoneNum, 30L /*timeout*/, TimeUnit.SECONDS,
+                this, object : PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
+
+            override fun onCodeSent(verificationId: String?,forceResendingToken: PhoneAuthProvider.ForceResendingToken?) {
+                Log.d("varification id",verificationId)
+
+
+
+            }
+
+            override fun onVerificationCompleted(phoneAuthCredential: PhoneAuthCredential) {
+                // Sign in with the credential
+                Log.d("varification id","error")
+                var intent=Intent(this@Registration,OTPFragment::class.java)
+                intent.putExtra("registermodel",registration)
+                intent.putExtra("otp",phoneAuthCredential.smsCode)
+                startActivity(intent)
+
+
+                // ...
+            }
+
+            override fun onVerificationFailed(e: FirebaseException) {
+                Log.d("varification id","error")
+            }
+        })
+        // [END auth_test_phone_verify]
+    }
+
+
+
 
 
 }
